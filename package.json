@@ -8,23 +8,27 @@
       "email": "stephen@whitebolt.net"
     }
   ],
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": false,
   "keywords": [
     "gulpfriendly",
-    "gulp"
+    "gulp",
+    "css",
+    "assets",
+    "rewrite"
   ],
   "dependencies": {
     "through2": "^2.0.3"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:Whitebolt/gulp-commonjs-browser-wrap.git"
+    "url": "git@github.com:Whitebolt/gulp-css-url-assets-rewrite.git"
   },
   "bugs": {
-    "url": "https://github.com/Whitebolt/gulp-commonjs-browser-wrap/issues"
+    "url": "https://github.com/Whitebolt/gulp-css-url-assets-rewrite/issues"
   },
-  "homepage": "https://github.com/Whitebolt/gulp-commonjs-browser-wrap#readme",
+  "homepage": "https://github.com/Whitebolt/gulp-css-url-assets-rewrite#readme",
   "license": "MIT",
-  "devDependencies": {}
+  "devDependencies": {},
+  "engines": ">=6.4.0"
 }
