@@ -39,21 +39,29 @@ function getTestPaths(assets, urlPath) {
 	return makeArray(assets).map(assetPath=>path.resolve(assetPath, urlPath));
 }
 
-function getReplacePath(assets, urlPath) {
+function getReplacePath(assets, roots, urlPath) {
 	let _urlPath = trimUrl(urlPath);
 	const testPaths = getTestPaths(assets, _urlPath);
 	const found = testPaths.find(urlPath=>fs.existsSync(urlPath));
-	return (found ? untrimUrl(found, urlPath) : urlPath);
+	return (found ? getRootRelativeUrl(roots, untrimUrl(found, urlPath)) : urlPath);
+}
+
+function getRootRelativeUrl(roots, urlPath) {
+	const found = makeArray(roots).find(root=>urlPath.startsWith(root));
+	return (found?urlPath.replace(found, ''):urlPath);
 }
 
 function plugin(options, file, encoding, callback) {
 	const ext = file.extname || path.extname(file.path);
 	if ((ext !== '.css') || !file.isBuffer()) return callback(null, file);
+	return doReplacements(options, file, encoding, callback);
+}
 
+function doReplacements(options, file, encoding, callback) {
 	let replaced, contents;
 	contents = file.contents.toString();
 	for (let [fullMatch, urlPath] of urls(contents)) {
-		const replacePath = getReplacePath(options.assets, urlPath);
+		const replacePath = getReplacePath(options.assets, options.root, urlPath);
 		if (replacePath !== urlPath) {
 			replaced = true;
 			contents = contents.replace(fullMatch, fullMatch.replace(urlPath, replacePath));
@@ -61,8 +69,7 @@ function plugin(options, file, encoding, callback) {
 	}
 
 	if (replaced) file.contents = new Buffer(contents);
-	callback(null, file)
-
+	callback(null, file);
 }
 
 module.exports = options=>{
