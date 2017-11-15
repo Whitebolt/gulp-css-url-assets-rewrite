@@ -1,0 +1,30 @@
+{
+  "name": "gulp-css-url-assets-rewrite",
+  "description": "",
+  "author": "Whitebolt <hello@whitebolt.net>",
+  "contributors": [
+    {
+      "name": "Stephen Simpson",
+      "email": "stephen@whitebolt.net"
+    }
+  ],
+  "version": "0.0.1",
+  "private": false,
+  "keywords": [
+    "gulpfriendly",
+    "gulp"
+  ],
+  "dependencies": {
+    "through2": "^2.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Whitebolt/gulp-commonjs-browser-wrap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Whitebolt/gulp-commonjs-browser-wrap/issues"
+  },
+  "homepage": "https://github.com/Whitebolt/gulp-commonjs-browser-wrap#readme",
+  "license": "MIT",
+  "devDependencies": {}
+}
